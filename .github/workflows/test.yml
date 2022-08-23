@@ -32,10 +32,22 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     outputs:
-      preid: ${{ needs.build.outputs.preid }}
+      preid: ${{ needs.deploy.outputs.preid }}
     needs: deploy
     steps:
       - uses: actions/checkout@v1
       - name: Get preid
         run: |
-          echo -e "Preid is: ${{ needs.deploy.outputs.preid }}" && exit 1
+          echo -e "Preid is: ${{ needs.deploy.outputs.preid }}"
+
+  itest:
+    name: Run integration tests
+    runs-on: ubuntu-latest
+    outputs:
+      preid: ${{ needs.test.outputs.preid }}
+    needs: test
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get preid
+        run: |
+          echo -e "Preid is: ${{ needs.test.outputs.preid }}" && exit 1
