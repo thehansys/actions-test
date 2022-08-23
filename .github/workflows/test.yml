@@ -11,10 +11,10 @@ jobs:
       preid: ${{ steps.setPreid.outputs.preid }}
     steps:
       - uses: actions/checkout@master
-      - id : setPreid
-      - run: |
+        id : setPreid
+        run: |
           echo -e "::set-output name=preid::$(date +'%s')"
-      - run: echo $(date +'%m/%d/%Y')
+        run: echo $(date +'%m/%d/%Y')
 
   deploy:
     name: Run deploy
@@ -22,5 +22,5 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@master
-      - run: |
+        run: |
           echo -e "Preid is: ${{ needs.build.outputs.preid }}"
