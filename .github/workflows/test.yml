@@ -12,11 +12,22 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Set preid
+        id : setPreid
         run: |
           echo -e "::set-output name=preid::$(date +'%s')"
 
   deploy:
     name: Run deploy
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get preid
+        run: |
+          echo -e "Preid is: ${{ needs.build.outputs.preid }}"
+
+  deploy:
+    name: Run tests
     runs-on: ubuntu-latest
     needs: build
     steps:
