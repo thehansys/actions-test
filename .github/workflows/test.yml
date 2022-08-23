@@ -14,7 +14,7 @@ jobs:
       - name: Set preid
         id : setPreid
         run: |
-          echo -e "::set-output name=preid::$(date +'%s')"
+          echo -e "::set-output name=preid::next-$(date +'%s')-${{ github.sha }}"
 
   deploy:
     name: Run deploy
