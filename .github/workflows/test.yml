@@ -38,4 +38,4 @@ jobs:
       - uses: actions/checkout@v1
       - name: Get preid
         run: |
-          echo -e "Preid is: ${{ needs.build.outputs.preid }}"
+          echo -e "Preid is: ${{ needs.deploy.outputs.preid }}"
