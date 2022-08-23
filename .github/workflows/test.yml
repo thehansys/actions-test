@@ -11,6 +11,6 @@ jobs:
       preid: ${{ steps.setPreid.outputs.preid }}
     steps:
       - uses: actions/checkout@v1
-        - name: Create value as an environment variable
+      - name: Create value as an environment variable
         run: |
           echo -e "::set-output name=preid::$(date +'%s')"
