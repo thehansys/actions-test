@@ -19,6 +19,8 @@ jobs:
   deploy:
     name: Run deploy
     runs-on: ubuntu-latest
+    outputs:
+      preid: ${{ needs.build.outputs.preid }}
     needs: build
     steps:
       - uses: actions/checkout@v1
@@ -29,6 +31,8 @@ jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
+    outputs:
+      preid: ${{ needs.build.outputs.preid }}
     needs: deploy
     steps:
       - uses: actions/checkout@v1
