@@ -12,9 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
         id : setPreid
-        run: |
-          echo -e "::set-output name=preid::$(date +'%s')"
-        run: echo $(date +'%m/%d/%Y')
+        run: echo -e "::set-output name=preid::$(date +'%s')"
 
   deploy:
     name: Run deploy
